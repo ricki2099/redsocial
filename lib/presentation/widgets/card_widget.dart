@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:redsocial/domain/entities/post_entity.dart';
 
 class CardWidget extends StatelessWidget {
   final PostEntity post;
-
   CardWidget({@required this.post});
-
   @override
   Widget build(BuildContext context) {
+    String formattedDate = DateFormat('dd MMM. ').format(post.createdAt);
+    print(formattedDate);
     return Card(
       elevation: 10.0,
       child: Column(
@@ -41,11 +42,14 @@ class CardWidget extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text(
-                                  '16 dic. *',
-                                  style: TextStyle(
-                                    fontSize: 10.0,
-                                    color: Colors.grey,
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    formattedDate,
+                                    style: TextStyle(
+                                      fontSize: 10.0,
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                 ),
                                 Icon(
