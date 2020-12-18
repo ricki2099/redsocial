@@ -42,14 +42,11 @@ class CardWidget extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    formattedDate,
-                                    style: TextStyle(
-                                      fontSize: 10.0,
-                                      color: Colors.grey,
-                                    ),
+                                Text(
+                                  formattedDate,
+                                  style: TextStyle(
+                                    fontSize: 10.0,
+                                    color: Colors.grey,
                                   ),
                                 ),
                                 Icon(
@@ -68,7 +65,10 @@ class CardWidget extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text('${post.body}'),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('${post.body}'),
+                ),
                 SizedBox(
                   height: 10.0,
                 ),
