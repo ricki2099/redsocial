@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redsocial/presentacion/post/post_list.dart';
-// import 'package:redsocial/presentacion/product/product.dart';
+import 'package:redsocial/presentacion/product/product.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,12 +11,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Red social',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: PostList(),
+      // home: ProductsPage(),
     );
   }
 }

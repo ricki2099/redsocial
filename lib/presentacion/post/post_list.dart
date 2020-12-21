@@ -10,24 +10,21 @@ class PostList extends StatelessWidget {
     return DefaultTabController(
       length: 6,
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
-          child: Container(
-            height: 50.0,
-            child: TabBar(
-              labelPadding: EdgeInsets.only(left: 1.0, right: 1.0),
-              indicatorColor: Colors.blue,
-              unselectedLabelColor: Colors.grey,
-              labelColor: Colors.blue,
-              tabs: [
-                Text('Inicio', style: TextStyle(fontSize: 10.0)),
-                Text('Opiniones', style: TextStyle(fontSize: 10.0)),
-                Text('Información', style: TextStyle(fontSize: 10.0)),
-                Text('Videos', style: TextStyle(fontSize: 10.0)),
-                Text('Fotos', style: TextStyle(fontSize: 10.0)),
-                Text('En vivo', style: TextStyle(fontSize: 10.0)),
-              ],
-            ),
+        appBar: AppBar(
+          title: Text('Red Social'),
+          bottom: TabBar(
+            // labelPadding: EdgeInsets.only(left: 1.0, right: 1.0),
+            indicatorColor: Colors.blue,
+            unselectedLabelColor: Colors.white,
+            labelColor: Colors.white,
+            tabs: [
+              Text('Inicio', style: TextStyle(fontSize: 10.0)),
+              Text('Opiniones', style: TextStyle(fontSize: 10.0)),
+              Text('Información', style: TextStyle(fontSize: 10.0)),
+              Text('Videos', style: TextStyle(fontSize: 10.0)),
+              Text('Fotos', style: TextStyle(fontSize: 10.0)),
+              Text('En vivo', style: TextStyle(fontSize: 10.0)),
+            ],
           ),
         ),
         body: TabBarView(
