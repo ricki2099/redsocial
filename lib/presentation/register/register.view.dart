@@ -11,59 +11,56 @@ class RegisterView extends StatelessWidget {
     
     size = MediaQuery.of(context).size.width;
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(title: Text("Crear cuenta"),),
+      //backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: Stack(
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        SizedBox(height: 40),
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: Image.asset(
-                            'assets/images/imgregisterfirst.png',                          
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'Únete a Red Social',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Te ayudaremos a crear una cuenta en pocos pasos.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black54,
-                          ),                        
-                        ),
-                        SizedBox(height: 40,),
-                        _buttonNext(context),
-                      ],
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    SizedBox(height: 40),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Image.asset(
+                        'assets/images/imgregisterfirst.png',                          
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  _textLink(context),                
-                ],
+                    SizedBox(height: 20),
+                    Text(
+                      'Únete a Red Social',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Te ayudaremos a crear una cuenta en pocos pasos.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black54,
+                      ),                        
+                    ),
+                    SizedBox(height: 40,),
+                    _buttonNext(context),
+                  ],
+                ),
               ),
+              _textLink(context),                
             ],
           ),
         ),
-      )
+      ),
     );
 
   }

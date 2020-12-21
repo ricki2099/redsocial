@@ -12,6 +12,7 @@ class CreateView extends StatefulWidget {
 class _CreateViewState extends State<CreateView> {
   
   String _value = '-';
+  String _valueStatus = '-';
 
   final now = DateTime.now();
   String _fecha  = '';
@@ -40,9 +41,11 @@ class _CreateViewState extends State<CreateView> {
                   ),
                 ),
                 _textFirsName(context),
-                _textLastName(context),
+                _textLastName(context),                
                 _dateBirthday(context),
-                _crearDropdown(),
+                _textEmail(context),
+                _crearGender(),
+                _crearStatus(),
                 SizedBox(height: 40,),
                 _buttonCreate(context),
               ],
@@ -81,6 +84,21 @@ class _CreateViewState extends State<CreateView> {
     );
   }
 
+  Widget _textEmail(BuildContext context) {
+    return TextField(
+      keyboardType: TextInputType.emailAddress,      
+      decoration: InputDecoration(
+        labelText: "Correo Electrónico",
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Color(0XFFD1D1D1),
+            width: 2
+          ),
+        )
+      ),
+    );
+  }
+
   Widget _dateBirthday(BuildContext context){
     
     //final today = new DateTime(now.year, now.month, now.day);
@@ -101,7 +119,6 @@ class _CreateViewState extends State<CreateView> {
       onTap: (){
         FocusScope.of(context).requestFocus(new FocusNode());
         _selectDate( context );
-
       },
     );
   }
@@ -135,15 +152,15 @@ class _CreateViewState extends State<CreateView> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0)
       ),
-      elevation: 0.0,
-      color: Color(0XFF1877F2),
+      elevation: 0.0,      
+      color: Color(0XFF30A24B),
       textColor: Colors.white,
       onPressed: (){
       },
     );
   }
 
-  Widget _crearDropdown() {
+  Widget _crearGender() {
 
     return InputDecorator(
       decoration: InputDecoration(
@@ -173,6 +190,42 @@ class _CreateViewState extends State<CreateView> {
           setState(() {
             _value = value;
             print(_value);
+          });
+        }
+      )
+    );
+  }
+
+  Widget _crearStatus() {
+
+    return InputDecorator(
+      decoration: InputDecoration(
+        labelText: 'Estado',
+        labelStyle: TextStyle(fontSize: 22),        
+      ),
+      child: DropdownButton(
+        isExpanded: true,
+         isDense: true,
+         icon: Icon(Icons.keyboard_arrow_down),
+         value: _valueStatus,
+           items: [
+             DropdownMenuItem(
+               child: Text("--seleccione--"),
+               value: '-',
+             ),
+             DropdownMenuItem(
+               child: Text("Activado"),
+               value: 'Active',
+             ),
+             DropdownMenuItem(
+               child: Text("Inactivo"),
+               value: 'Inactive'
+             )
+         ],
+         onChanged: (value) {
+          setState(() {
+            _valueStatus = value;
+            print(_valueStatus);
           });
         }
       )
