@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:redsocial/data/remote/product_api.dart';
 import 'package:redsocial/domain/entities/product.dart';
+import 'package:redsocial/presentacion/product/share/backdrop.dart';
 import 'package:redsocial/presentacion/product/widgets/products_details.dart';
 import 'package:redsocial/presentacion/product/widgets/products_item.dart';
-import 'package:redsocial/presentacion/share/backdrop.dart';
 
 final _characterGridViewMargin = 48.0;
 final _characterGridViewSpanCountPortrait = 2;
