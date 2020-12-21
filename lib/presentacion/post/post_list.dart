@@ -12,7 +12,35 @@ class PostList extends StatelessWidget {
       length: 6,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Red Social'),
+          leading: Icon(Icons.arrow_back, color: Colors.white),
+          title: Container(
+            alignment: Alignment.centerLeft,
+            child: TextField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderSide: BorderSide(width: 1, color: Colors.blue),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderSide: BorderSide(width: 1, color: Colors.blue),
+                ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
+                contentPadding: EdgeInsets.all(5.0),
+              ),
+            ),
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+              child: Icon(Icons.redo),
+            ),
+          ],
           bottom: TabBar(
             // // labelPadding: EdgeInsets.only(left: 1.0, right: 1.0),
             indicatorColor: Colors.white,
