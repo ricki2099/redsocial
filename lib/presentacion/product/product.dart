@@ -48,8 +48,14 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   Widget build(BuildContext context) {
     return Backdrop(
-      frontTitle: Text(_frontTitle),
-      backTitle: Text(_backTitle),
+      frontTitle: Text(
+        _frontTitle,
+        style: TextStyle(color: Colors.grey),
+      ),
+      backTitle: Text(_backTitle,
+          style: TextStyle(
+            color: Colors.grey,
+          )),
       currentCharacter: _currentCharacter,
       backPanel: _buildBackPanel(),
       frontPanel: _buildFrontPanel(),

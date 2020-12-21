@@ -222,10 +222,12 @@ class _BackdropState extends State<Backdrop>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
+          color: Colors.grey,
           icon: AnimatedIcon(
-              icon: AnimatedIcons.add_event, progress: _controller.view),
+              icon: AnimatedIcons.menu_close, progress: _controller.view),
           onPressed: _toggleBackdropPanelVisibility,
         ),
         title: _BackdropTitle(

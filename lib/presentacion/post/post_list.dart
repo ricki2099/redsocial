@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:redsocial/data/remote/post_api.dart';
 import 'package:redsocial/domain/entities/post_entity.dart';
 import 'package:redsocial/presentacion/post/widgets/card_widget.dart';
+import 'package:redsocial/presentacion/product/product.dart';
 
 class PostList extends StatelessWidget {
   final postApi = new PostListApi();
@@ -13,17 +14,22 @@ class PostList extends StatelessWidget {
         appBar: AppBar(
           title: Text('Red Social'),
           bottom: TabBar(
-            // labelPadding: EdgeInsets.only(left: 1.0, right: 1.0),
-            indicatorColor: Colors.blue,
+            // // labelPadding: EdgeInsets.only(left: 1.0, right: 1.0),
+            indicatorColor: Colors.white,
             unselectedLabelColor: Colors.white,
             labelColor: Colors.white,
             tabs: [
-              Text('Inicio', style: TextStyle(fontSize: 10.0)),
-              Text('Opiniones', style: TextStyle(fontSize: 10.0)),
-              Text('Información', style: TextStyle(fontSize: 10.0)),
-              Text('Videos', style: TextStyle(fontSize: 10.0)),
-              Text('Fotos', style: TextStyle(fontSize: 10.0)),
-              Text('En vivo', style: TextStyle(fontSize: 10.0)),
+              Tab(icon: Icon(Icons.home)),
+              Tab(icon: Icon(Icons.video_library)),
+              Tab(icon: Icon(Icons.shopping_cart)),
+              Tab(icon: Icon(Icons.videogame_asset_outlined)),
+              Tab(icon: Icon(Icons.notifications)),
+              Tab(icon: Icon(Icons.menu)),
+              // Text('Opiniones', style: TextStyle(fontSize: 10.0)),
+              // // Text('Información', style: TextStyle(fontSize: 10.0)),
+              // Text('Videos', style: TextStyle(fontSize: 10.0)),
+              // Text('Fotos', style: TextStyle(fontSize: 10.0)),
+              // Text('En vivo', style: TextStyle(fontSize: 10.0)),
             ],
           ),
         ),
@@ -52,8 +58,9 @@ class PostList extends StatelessWidget {
               },
             ),
             Text('Aqui va el contenido de Opciones'),
+            ProductsPage(),
             Text('Aqui va el contenido de Información'),
-            Text('Aqui va el contenido de Videos'),
+            // Text('Aqui va el contenido de Videos'),
             Text('Aqui va el contenido de Fotos'),
             Text('Aqui va el contenido de En vivo'),
           ],
