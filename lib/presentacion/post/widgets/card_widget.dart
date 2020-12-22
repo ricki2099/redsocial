@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:redsocial/data/remote/comment_provider.dart';
+import 'package:redsocial/data/remote/user_api.dart';
 import 'package:redsocial/domain/entities/post_entity.dart';
 
 class CardWidget extends StatelessWidget {
@@ -8,7 +9,6 @@ class CardWidget extends StatelessWidget {
   CardWidget({@required this.post});
   @override
   Widget build(BuildContext context) {
-    final comentApi = CommentApiProvider();
     String formattedDate = DateFormat('dd MMM. ').format(post.createdAt);
     return Card(
       elevation: 10.0,
@@ -33,7 +33,17 @@ class CardWidget extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('IESA'),
+                                FutureBuilder<String>(
+                                  future: UserApi()
+                                      .getUserNameById(userId: post.userId),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      return Text('${snapshot.data}');
+                                    } else {
+                                      return Text('Usuario...');
+                                    }
+                                  },
+                                ),
                                 Icon(Icons.more_horiz),
                               ],
                             ),
