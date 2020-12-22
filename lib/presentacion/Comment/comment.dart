@@ -5,8 +5,11 @@ import 'package:redsocial/data/remote/comment_provider.dart';
 import 'package:redsocial/presentacion/Comment/widgets/list_comment.dart';
 
 class Comment extends StatelessWidget {
-  const Comment({Key key}) : super(key: key);
-  final int postId = 122;
+  const Comment({
+    Key key, 
+    @required this.postId
+  }) : super(key: key);
+  final int postId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: SafeArea(child: Mio(postId:this.postId)));
@@ -14,7 +17,7 @@ class Comment extends StatelessWidget {
 }
 
 final TextEditingController _comment =
-    TextEditingController(text: 'Escribe un comentario');
+    TextEditingController(text: 'Escribe un comentario...');
 
 class Mio extends StatelessWidget {
   const Mio({
@@ -36,12 +39,13 @@ class Mio extends StatelessWidget {
                   Icons.arrow_back,
                   color: Colors.black,
                 ),
-                Container(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: Icon(
-                    Icons.recommend,
-                    color: Colors.blue,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [Icon(
+                    Icons.thumb_up_alt,
+                    color: Colors.grey,
+                  ),]
                 ),
               ],
             ),
@@ -108,7 +112,7 @@ class Comentar extends StatelessWidget {
                   color: Colors.grey,
                 ),
                 InkWell(
-                  onTap: _saveComennt(),
+                  onTap: () => _saveComennt(),
                   child: Icon(
                     Icons.send,
                     color: Colors.blue,
