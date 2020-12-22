@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:redsocial/data/remote/comment_provider.dart';
 import 'package:redsocial/domain/entities/post_entity.dart';
+import 'package:redsocial/presentacion/Comment/comment.dart';
 
 class CardWidget extends StatelessWidget {
   final PostEntity post;
@@ -94,7 +95,7 @@ class CardWidget extends StatelessWidget {
                     ),
                     FutureBuilder<int>(
                       future: CommentApiProvider()
-                          .getTotalCommentsPost(postId: post.userId),
+                          .getTotalCommentsPost(postId: post.id),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return Text('${snapshot.data} comentarios');
@@ -134,20 +135,23 @@ class CardWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.comment_outlined,
-                      color: Colors.grey,
-                    ),
-                    SizedBox(
-                      width: 5.0,
-                    ),
-                    Text(
-                      'Comentar',
-                      style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                    ),
-                  ],
+                InkWell(
+                  onTap: () => _goToComments(context, this.post.id),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.comment_outlined,
+                        color: Colors.grey,
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Text(
+                        'Comentar',
+                        style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                      ),
+                    ],
+                  ),
                 ),
                 Row(
                   children: [
@@ -168,6 +172,17 @@ class CardWidget extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  _goToComments(context, postId) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Comment(
+          postId: postId,
+        ),
       ),
     );
   }

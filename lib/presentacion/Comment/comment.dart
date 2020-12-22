@@ -12,12 +12,23 @@ class Comment extends StatelessWidget {
   final int postId;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(child: Mio(postId:this.postId)));
+    return Scaffold(
+      appBar: AppBar(
+        // leading: Icon(Icons.arrow_back, color: Colors.grey),
+        // backgroundColor: Colors.white,
+        actions: [
+            Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+              child: Icon(Icons.thumb_up),
+            ),
+        ],
+      ),
+      body: SafeArea(child: Mio(postId:this.postId)));
   }
 }
 
 final TextEditingController _comment =
-    TextEditingController(text: 'Escribe un comentario...');
+    TextEditingController(text: '');
 
 class Mio extends StatelessWidget {
   const Mio({
@@ -29,26 +40,26 @@ class Mio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(left: 2, top: 16, right: 2),
+        padding: EdgeInsets.only(left: 2, right: 2, bottom: 4),
         child: Column(
           children: [
-            Row(
-              children: [
-                Text(' '),
-                Icon(
-                  Icons.arrow_back,
-                  color: Colors.black,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [Icon(
-                    Icons.thumb_up_alt,
-                    color: Colors.grey,
-                  ),]
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Text(' '),
+            //     Icon(
+            //       Icons.arrow_back,
+            //       color: Colors.black,
+            //     ),
+            //     Row(
+            //       mainAxisAlignment: MainAxisAlignment.end,
+            //       mainAxisSize: MainAxisSize.min,
+            //       children: [Icon(
+            //         Icons.thumb_up_alt,
+            //         color: Colors.grey,
+            //       ),]
+            //     ),
+            //   ],
+            // ),
             Container(
               width: 9000,
               height: 1,
@@ -95,11 +106,9 @@ class Comentar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      // controller: _comment,
+      controller: _comment,
       decoration: InputDecoration(
-        // focusColor: Color(0xFF080808),
         hintStyle: TextStyle(color: Colors.grey),
-        // fillColor: Color(0xFF080808),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
         suffixIcon: Padding(
           padding: EdgeInsets.only(right: 8),

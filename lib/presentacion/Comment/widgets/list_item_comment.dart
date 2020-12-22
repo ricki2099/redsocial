@@ -27,7 +27,7 @@ class ListItemComment extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                // width: 210,
+                width: 210,
                 // alignment: AlignmentDirectional.,
                 decoration: BoxDecoration(
                     color: Color(0xFFE9ECEF),
@@ -41,11 +41,12 @@ class ListItemComment extends StatelessWidget {
                       textAlign: TextAlign.start,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 15,
+                        fontSize: 15
                       ),
                     ),
                     Text(
                       comment.body,
+                      maxLines: 2,
                       textAlign: TextAlign.start,
                     )
                   ],

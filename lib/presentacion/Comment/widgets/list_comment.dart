@@ -14,8 +14,8 @@ class ListComments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FutureBuilder<List<CommentEntity>>(
-        future: CommentApiProvider().getCommentsPost(postId: postId),
+      child: FutureBuilder<List<CommentEntity>> (
+        future: CommentApiProvider().getCommentsPost(postId: this.postId),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           final List<CommentEntity> comment = snapshot.data;
           if (snapshot.hasData) {
@@ -25,7 +25,16 @@ class ListComments extends StatelessWidget {
                 return ListItemComment(comment: comment[index]);
               },
             );
-          }
+          } 
+          // else {
+            // return Center(
+            //     child: Column(
+            //       children: [
+            //         Text('Todavía no hay comentarios.'),
+            //         Text('Se el primero en comentar.'),
+            //     ],)
+            // );
+          // }
           return Center(
               child: SpinKitRipple(
             color: Colors.black,
