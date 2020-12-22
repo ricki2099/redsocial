@@ -27,6 +27,8 @@ class HttpManager {
   }
 
   _getHeaders() async {
-    return {'Content-Type': 'application/json; charset=UTF-8'};
+    return {'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer a961a1f63fd60a965789c0d6b779e2211645d93226b5df05d0126575e50e7b05'
+    };
   }
 }

@@ -1,40 +1,32 @@
-
 import 'package:flutter/material.dart';
 import 'package:redsocial/domain/entities/comment_entity.dart';
 import 'package:redsocial/data/remote/comment_provider.dart';
 import 'package:redsocial/presentacion/Comment/widgets/list_comment.dart';
 
 class Comment extends StatelessWidget {
-  const Comment({
-    Key key, 
-    @required this.postId
-  }) : super(key: key);
+  const Comment({Key key, @required this.postId}) : super(key: key);
   final int postId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // leading: Icon(Icons.arrow_back, color: Colors.grey),
-        // backgroundColor: Colors.white,
-        actions: [
+        appBar: AppBar(
+          // leading: Icon(Icons.arrow_back, color: Colors.grey),
+          // backgroundColor: Colors.white,
+          actions: [
             Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Icon(Icons.thumb_up),
             ),
-        ],
-      ),
-      body: SafeArea(child: Mio(postId:this.postId)));
+          ],
+        ),
+        body: SafeArea(child: Mio(postId: this.postId)));
   }
 }
 
-final TextEditingController _comment =
-    TextEditingController(text: '');
+final TextEditingController _comment = TextEditingController(text: '');
 
 class Mio extends StatelessWidget {
-  const Mio({
-    Key key,
-    @required this.postId
-  }) : super(key: key);
+  const Mio({Key key, @required this.postId}) : super(key: key);
   final int postId;
 
   @override
@@ -72,36 +64,33 @@ class Mio extends StatelessWidget {
               height: 1,
               color: Colors.grey,
             ),
-            Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.photo_camera_outlined,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      width: 350,
-                      color: Color(0xFFE9ECEF),
-                      child: Comentar(),
-                    ),
-                  ),
-                ])
+            Row(children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  Icons.photo_camera_outlined,
+                  color: Colors.grey,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: 350,
+                  color: Color(0xFFE9ECEF),
+                  child: Comentar(postId:this.postId),
+                ),
+              ),
+            ])
           ],
         ));
   }
-
-
 }
 
 class Comentar extends StatelessWidget {
   const Comentar({
-    Key key,
+    Key key,@required this.postId
   }) : super(key: key);
-  final postId = 122;
+  final postId;
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +98,7 @@ class Comentar extends StatelessWidget {
       controller: _comment,
       decoration: InputDecoration(
         hintStyle: TextStyle(color: Colors.grey),
+        fillColor: Colors.blue,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
         suffixIcon: Padding(
           padding: EdgeInsets.only(right: 8),
@@ -136,14 +126,13 @@ class Comentar extends StatelessWidget {
     );
   }
 
-  
   _saveComennt() async {
     final provider = new CommentApiProvider();
     CommentEntity comentario = new CommentEntity();
     comentario.body = _comment.text;
     comentario.email = "nelson@yopmail.com";
     comentario.name = "Nelson Londoño";
-    comentario.postId = postId;
+    comentario.postId = this.postId;
     provider.postCreateComment(comentario);
   }
 }

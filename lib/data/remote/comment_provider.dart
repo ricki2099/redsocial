@@ -24,7 +24,7 @@ class CommentApiProvider {
         'posts/' + comment.postId.toString() + '/comments', comment.toJson());
     print(response);
     var respuesta = false;
-    if (response.data) {
+    if (response["data"]) {
       respuesta = true;
     }
     return respuesta;
