@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:redsocial/data/remote/comment_provider.dart';
+import 'package:redsocial/data/remote/user_api.dart';
 import 'package:redsocial/domain/entities/post_entity.dart';
+import 'package:redsocial/presentacion/Comment/comment.dart';
 
 class CardWidget extends StatelessWidget {
   final PostEntity post;
@@ -8,7 +11,6 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat('dd MMM. ').format(post.createdAt);
-    print(formattedDate);
     return Card(
       elevation: 10.0,
       child: Column(
@@ -32,7 +34,17 @@ class CardWidget extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('IESA'),
+                                FutureBuilder<String>(
+                                  future: UserApi()
+                                      .getUserNameById(userId: post.userId),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      return Text('${snapshot.data}');
+                                    } else {
+                                      return Text('Usuario...');
+                                    }
+                                  },
+                                ),
                                 Icon(Icons.more_horiz),
                               ],
                             ),
@@ -91,9 +103,16 @@ class CardWidget extends StatelessWidget {
                         Text('4', style: TextStyle(fontSize: 14.0)),
                       ],
                     ),
-                    Text(
-                      '5 comentarios',
-                      style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                    FutureBuilder<int>(
+                      future: CommentApiProvider()
+                          .getTotalCommentsPost(postId: post.id),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text('${snapshot.data} comentarios');
+                        } else {
+                          return Text('Cargando comentarios...');
+                        }
+                      },
                     ),
                   ],
                 ),
@@ -126,20 +145,23 @@ class CardWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.comment_outlined,
-                      color: Colors.grey,
-                    ),
-                    SizedBox(
-                      width: 5.0,
-                    ),
-                    Text(
-                      'Comentar',
-                      style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                    ),
-                  ],
+                InkWell(
+                  onTap: () => _goToComments(context, this.post.id),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.comment_outlined,
+                        color: Colors.grey,
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Text(
+                        'Comentar',
+                        style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                      ),
+                    ],
+                  ),
                 ),
                 Row(
                   children: [
@@ -160,6 +182,17 @@ class CardWidget extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  _goToComments(context, postId) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Comment(
+          postId: postId,
+        ),
       ),
     );
   }
