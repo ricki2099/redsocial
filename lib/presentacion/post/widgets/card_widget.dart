@@ -7,6 +7,9 @@ class CardWidget extends StatelessWidget {
   CardWidget({@required this.post});
   @override
   Widget build(BuildContext context) {
+    print('post *************************************************************');
+    print(post.id);
+    print(post.postId);
     String formattedDate = DateFormat('dd MMM. ').format(post.createdAt);
     print(formattedDate);
     return Card(
@@ -92,7 +95,7 @@ class CardWidget extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      '5 comentarios',
+                      '${post.postId} comentarios',
                       style: TextStyle(fontSize: 12.0, color: Colors.grey),
                     ),
                   ],
