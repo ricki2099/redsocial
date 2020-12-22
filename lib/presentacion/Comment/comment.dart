@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:redsocial/comment_entity.dart';
-import 'package:redsocial/comment_provider.dart';
-import 'package:redsocial/list_comment.dart';
+import 'package:redsocial/domain/entities/comment_entity.dart';
+import 'package:redsocial/data/remote/comment_provider.dart';
+import 'package:redsocial/presentacion/Comment/widgets/list_comment.dart';
 
 class Comment extends StatelessWidget {
   const Comment({Key key}) : super(key: key);

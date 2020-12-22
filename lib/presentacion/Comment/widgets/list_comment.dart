@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:redsocial/comment_entity.dart';
-import 'package:redsocial/comment_provider.dart';
+import 'package:redsocial/domain/entities/comment_entity.dart';
+import 'package:redsocial/data/remote/comment_provider.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'list_item_comment.dart';
 

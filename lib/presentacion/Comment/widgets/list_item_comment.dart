@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redsocial/comment_entity.dart';
+import 'package:redsocial/domain/entities/comment_entity.dart';
 
 class ListItemComment extends StatelessWidget {
   const ListItemComment({

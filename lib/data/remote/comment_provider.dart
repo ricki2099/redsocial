@@ -1,5 +1,5 @@
-import 'package:redsocial/comment_entity.dart';
-import 'package:redsocial/http_manager.dart';
+import 'package:redsocial/domain/entities/comment_entity.dart';
+import 'package:redsocial/manager/http_manager.dart';
 
 class CommentApiProvider {
   final HttpManager httpManager = HttpManager();
