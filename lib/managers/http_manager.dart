@@ -9,7 +9,7 @@ class HttpManager {
   Future<dynamic> get(url) async {
     
     final headers = await _getHeaders();
-    final response = await http.Client().get(AppConfig.API_URL + url, headers: headers);
+    final response = await http.Client().get(url, headers: headers);
     return response;
   }
 
