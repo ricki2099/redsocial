@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:redsocial/data/remote/comment_provider.dart';
 import 'package:redsocial/domain/entities/post_entity.dart';
 
 class CardWidget extends StatelessWidget {
@@ -7,11 +8,8 @@ class CardWidget extends StatelessWidget {
   CardWidget({@required this.post});
   @override
   Widget build(BuildContext context) {
-    print('post *************************************************************');
-    print(post.id);
-    print(post.postId);
+    final comentApi = CommentApiProvider();
     String formattedDate = DateFormat('dd MMM. ').format(post.createdAt);
-    print(formattedDate);
     return Card(
       elevation: 10.0,
       child: Column(
@@ -94,9 +92,16 @@ class CardWidget extends StatelessWidget {
                         Text('4', style: TextStyle(fontSize: 14.0)),
                       ],
                     ),
-                    Text(
-                      '${post.postId} comentarios',
-                      style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                    FutureBuilder<int>(
+                      future: CommentApiProvider()
+                          .getTotalCommentsPost(postId: post.userId),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text('${snapshot.data} comentarios');
+                        } else {
+                          return Text('Cargando comentarios...');
+                        }
+                      },
                     ),
                   ],
                 ),
