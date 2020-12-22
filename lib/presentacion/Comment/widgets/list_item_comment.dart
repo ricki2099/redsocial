@@ -20,7 +20,7 @@ class ListItemComment extends StatelessWidget {
             width: 40,
             padding: EdgeInsets.only(bottom: 45),
             child: Image.network(
-                'https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png'),
+                'https://png.pngtree.com/png-vector/20190629/ourlarge/pngtree-business-people-avatar-icon-user-profile-free-vector-png-image_1527664.jpg'),
           ),
           SizedBox(width: 10),
           Column(

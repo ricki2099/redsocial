@@ -1,5 +1,5 @@
+import 'package:redsocial/data/manager/http_manager.dart';
 import 'package:redsocial/domain/entities/comment_entity.dart';
-import 'package:redsocial/manager/http_manager.dart';
 
 class CommentApiProvider {
   final HttpManager httpManager = HttpManager();
@@ -7,9 +7,16 @@ class CommentApiProvider {
   Future<List<CommentEntity>> getCommentsPost({int postId}) async {
     var response =
         await httpManager.get('posts/' + postId.toString() + '/comments');
-    // print(response);
     final responseJson = CommentEntity.fromJSONList(response['data']);
     return responseJson;
+  }
+
+  Future<int> getTotalCommentsPost({int postId}) async {
+    var response =
+        await httpManager.get('posts/' + postId.toString() + '/comments');
+    final responseJson = response['meta'];
+    var total = responseJson["pagination"];
+    return total["total"];
   }
 
   Future<bool> postCreateComment(CommentEntity comment) async {
