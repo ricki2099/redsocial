@@ -88,7 +88,6 @@ class PostList extends StatelessWidget {
             Text('Aqui va el contenido de Opciones'),
             ProductsPage(),
             Text('Aqui va el contenido de Información'),
-            // Text('Aqui va el contenido de Videos'),
             Text('Aqui va el contenido de Fotos'),
             Text('Aqui va el contenido de En vivo'),
           ],
