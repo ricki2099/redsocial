@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redsocial/bloc/login_bloc.dart';
+import 'package:redsocial/bloc/users_bloc.dart';
 
 class Provider extends InheritedWidget {
 
@@ -20,6 +21,7 @@ class Provider extends InheritedWidget {
 
 
   final loginBloc = LoginBloc();
+  final usersBloc = UsersBloc();
 
   // Provider({ Key key, Widget child })
   //   : super(key: key, child: child );
@@ -31,6 +33,10 @@ class Provider extends InheritedWidget {
   static LoginBloc of ( BuildContext context ) {    
     //return ( context.inheritFromWidgetOfExactType(Provider) as Provider ).loginBloc;
     return context.dependOnInheritedWidgetOfExactType<Provider>().loginBloc;
+  }
+  
+  static UsersBloc ofUsers ( BuildContext context ) {        
+    return context.dependOnInheritedWidgetOfExactType<Provider>().usersBloc;
   }
 
 }

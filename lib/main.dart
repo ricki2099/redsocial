@@ -24,6 +24,6 @@ class MyApp extends StatelessWidget {
         initialRoute: LoginView.routeName,
         routes: appRoutes,
       ),
-    );    
+    );
   }
 }

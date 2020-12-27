@@ -44,7 +44,7 @@ class LoginView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(30.0),
                     child: Column(
-                      children: [                          
+                      children: [
                         _textLogin(bloc),
                         _textPassword(bloc),
                         SizedBox(height: 20,),
@@ -54,11 +54,10 @@ class LoginView extends StatelessWidget {
                         _buttonCreate(context)
                       ],
                     ),
-                    
-                  ),                    
+                  ),
                 ],
-              ),                
-            ),            
+              ),
+            ),
       ),
     );
   }
@@ -87,20 +86,6 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  Widget _crearEmail(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: "correo electrónico",
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Color(0XFFD1D1D1),
-            width: 2
-          ),
-        )
-      ),
-    );
-  }
-
   Widget _textPassword(LoginBloc bloc) {
 
     return StreamBuilder(
@@ -125,32 +110,6 @@ class LoginView extends StatelessWidget {
       },
     );
   }
-
-  // Widget _crearBoton(BuildContext context) {
-  //   return RaisedButton(
-  //     child: Container(
-  //       width: double.infinity,        
-  //       //padding: EdgeInsets.symmetric(horizontal: 100.0, vertical: 10.0),
-  //       child: Text("Iniciar sesión", textAlign: TextAlign.center, style: TextStyle(fontSize: 12),),
-  //     ),
-  //     shape: RoundedRectangleBorder(
-  //       borderRadius: BorderRadius.circular(5.0)
-  //     ),
-  //     elevation: 0.0,
-  //     color: Color(0XFF1878F3),
-  //     textColor: Colors.white,
-  //     onPressed: (){
-  //       FutureBuilder<List<UsersModel>>(
-  //         future: repository.getLogin('', 16),
-  //         builder: (context, snapshot){
-  //           //final items = snapshot.data;
-  //           print('Resultado:');
-  //           //print(items);
-  //         },
-  //       );
-  //     },
-  //   );
-  // }
 
   Widget _buttonLogin( LoginBloc bloc) {
 

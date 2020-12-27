@@ -31,4 +31,17 @@ class Validators {
 
     }
   );
+
+  final validateField = StreamTransformer<String, String>.fromHandlers(
+    handleData: ( value, sink ) {
+
+      if ( value.length >= 1 ) {
+        sink.add( value );
+      } else {
+        sink.addError('El campo es requerido');
+      }
+    }
+  );
+
+
 }
