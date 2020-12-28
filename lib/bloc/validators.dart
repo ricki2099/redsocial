@@ -43,5 +43,16 @@ class Validators {
     }
   );
 
+  final validateDropDown = StreamTransformer<String, String>.fromHandlers(
+    handleData: ( value, sink ) {
+
+      if ( value.length >= 0 ) {
+        sink.add( value );
+      } else {
+        sink.addError('El campo es requerido');
+      }
+    }
+  );
+
 
 }

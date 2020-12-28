@@ -8,4 +8,9 @@ class UsersRepository {
     return await api.getLogin(email, password);
   }
 
+  Future<UsersModel> createUsers(UsersModel model) async {
+    UsersAPI api = UsersAPI();
+    return await api.createUsers(model);
+  }
+
 }

@@ -79,7 +79,8 @@ class RegisterView extends StatelessWidget {
       color: Color(0XFF1877F2),
       textColor: Colors.white,
       onPressed: (){
-        Navigator.pushNamed(context, CreateView.routeName);
+        //Navigator.pushNamed(context, CreateView.routeName);
+        Navigator.pushReplacementNamed(context, CreateView.routeName);
       },
     );
   }
