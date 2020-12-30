@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 void main() => runApp(HomePage());
 
 class HomePage extends StatefulWidget {
+  
+  static String routeName = 'homeScreen';
+
   @override
   _HomePagePage createState() => _HomePagePage();
 }
@@ -11,7 +14,7 @@ class _HomePagePage extends State<HomePage>
     with SingleTickerProviderStateMixin {
   TabController tabController;
 
-  String title = "Home";
+  String title = "Home";  
 
   @override
   void initState() {

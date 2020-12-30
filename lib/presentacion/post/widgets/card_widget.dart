@@ -190,7 +190,7 @@ class CardWidget extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Comment(
+        builder: (context) => CommentPage(
           postId: postId,
         ),
       ),

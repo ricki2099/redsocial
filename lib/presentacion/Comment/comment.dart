@@ -3,9 +3,13 @@ import 'package:redsocial/domain/entities/comment_entity.dart';
 import 'package:redsocial/data/remote/comment_provider.dart';
 import 'package:redsocial/presentacion/Comment/widgets/list_comment.dart';
 
-class Comment extends StatelessWidget {
-  const Comment({Key key, @required this.postId}) : super(key: key);
+class CommentPage extends StatelessWidget {
+  
+  const CommentPage({Key key, @required this.postId}) : super(key: key);
   final int postId;
+  
+  static String routeName = 'commentScreen';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

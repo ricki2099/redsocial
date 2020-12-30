@@ -15,6 +15,8 @@ final _backTitle = 'Productos';
 class ProductsPage extends StatefulWidget {
   ProductsPage({Key key}) : super(key: key);
 
+  static String routeName = 'productScreen';
+
   @override
   _ProductsPageState createState() => _ProductsPageState();
 }

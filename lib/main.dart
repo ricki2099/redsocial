@@ -1,24 +1,32 @@
 
 import 'package:flutter/material.dart';
-import 'package:redsocial/presentacion/post/post_list.dart';
-import 'package:redsocial/presentacion/product/product.dart';
+import 'package:redsocial/bloc/provider.dart';
+// import 'package:redsocial/presentacion/post/post_list.dart';
+// import 'package:redsocial/presentacion/product/product.dart';
+import 'package:redsocial/presentacion/users/login_page.dart';
+import 'package:redsocial/routes/routes.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget {  
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Red social',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return Provider(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Red social',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        initialRoute: LoginPage.routeName,
+        routes: appRoutes,
+        //home: LoginPage(), //PostList(),
+        // home: ProductsPage(),
       ),
-      home: PostList(),
-      // home: ProductsPage(),
     );
   }
 }
